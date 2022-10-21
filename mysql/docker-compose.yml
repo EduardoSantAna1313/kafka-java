@@ -1,0 +1,10 @@
+version: "3.4"
+
+services:
+  mysql:
+    container_name: "mysql-kafka"
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+    ports:
+      - 3306:3306
