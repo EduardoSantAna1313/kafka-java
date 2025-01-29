@@ -2,6 +2,9 @@ package br.com.edu.wikimedia.app.domain.model
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import jakarta.persistence.*
 import java.time.Instant
 import java.util.UUID
@@ -87,5 +90,11 @@ data class WikimediaMessage(
 ) {
     fun getTimestampAsInstant(): Instant {
         return Instant.ofEpochSecond(timestamp)
+    }
+
+    fun toJsonString(): String {
+        val mapper = jacksonObjectMapper()
+        mapper.registerModules(JavaTimeModule())
+        return mapper.writeValueAsString(this)
     }
 }

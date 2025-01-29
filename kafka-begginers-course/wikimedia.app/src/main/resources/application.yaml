@@ -5,17 +5,15 @@ spring:
     console:
       enabled: true
 
-kafka:
-  bootstrap-servers: http://localhost:19092
-  consumer:
-    group-id: wikimedia-app-2025-01-21-20-55
-
 server:
   port: 8888
 
 app:
   wikimedia:
     url: https://stream.wikimedia.org/v2/stream/recentchange
+  producer:
+    topic-name: wikimedia-recent-changes
+    bootstrap-servers: http://localhost:19092
 
 logging:
   level:

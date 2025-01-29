@@ -18,7 +18,7 @@ class WikimediaStreamListener(
         try {
             logger.debug("Received message: $message")
             val change = mapper.readValue(message, WikimediaMessage::class.java)
-            service.save(change)
+            service.process(change)
         } catch (error: Exception) {
             logger.error("Ocorreu um erro ao processar a mensagem $message", error)
         }
