@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: "wikimedia.consumer.app"
+
+opensearch:
+  url: http://localhost:9200
+
+app:
+  consumer:
+    topic-name: wikimedia-recent-changes
+    group-id: wikimedia-consumer-1
+    bootstrap-servers: localhost:19092
